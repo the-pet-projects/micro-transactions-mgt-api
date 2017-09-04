@@ -1,0 +1,416 @@
+#%RAML 1.0
+title: micro-transactions-mgt-api
+version: v1
+baseUri: http://api.micro-transactions.com
+types:
+  TestType:
+    type: object
+    properties:
+      id: number
+      optional?: string
+      expanded:
+        type: object
+        properties:
+          count: number
+/transactions:
+  description: Create and update transactions
+  post:
+    description: Create a transaction
+    body:
+      application/json:
+        example: |
+          {
+            "user": "name",
+            "date": "2018-01-01 00:01:00",
+            "amount": 200,
+            "target": "ebay"
+          }
+    responses:
+     202:
+       description:
+       body:
+         application/json:
+           example: |
+            {
+              "id": "4c1e98a4-1641-472b-98fa-f19831a04c90",
+              "url": "/transactions/4c1e98a4-1641-472b-98fa-f19831a04c90",
+              "message": "The server has accepted the complete request, but has not yet completed it. Check url to obtain current status of the transaction request."
+            }
+     400:
+       description:
+       body:
+         application/json:
+           example: |
+             {
+               "errorCode": 400,
+               "errors": [ "errormessage1", "errormessage2"]
+              }
+     500:
+       description:
+       body:
+         application/json:
+           example: |
+             {
+                "errorCode": 500,
+                "errors": ["Internal Server Error"]
+             }
+  /{id}:
+    get:
+      description: Get a transaction
+      queryParameters:
+
+      responses:
+       202:
+         description:
+         body:
+           application/json:
+             example: |
+              {
+                "id": "4c1e98a4-1641-472b-98fa-f19831a04c90",
+                "user": "name",
+                "date": "2018-01-01 00:01:00",
+                "amount": 200,
+                "target": "ebay"
+              }
+
+       400:
+         description:
+         body:
+           application/json:
+             example: |
+               {
+                 "errorCode": 400,
+                 "errors": [ "errormessage1", "errormessage2"]
+                }
+       500:
+         description:
+         body:
+           application/json:
+             example: |
+               {
+                  "errorCode": 500,
+                  "errors": ["Internal Server Error"]
+               }
+/items:
+  description: Create that can be purchased via microtransactions
+  post:
+    description: Create an item
+    body:
+      application/json:
+        example: |
+          {
+            "name": "Knife"
+          }
+    responses:
+     201:
+       description:
+       body:
+         application/json:
+           example: |
+            {
+              "id": "f6f52fc3-761b-4c0d-846a-6c65123e1c8b",
+              "name": "Knife"
+            }
+     400:
+        description:
+        body:
+          application/json:
+            example: |
+              {
+               "errorCode": 400,
+               "message": "Bad Request",
+               "errors": ["errorMessage1", "errorMessage2"]
+              }
+     500:
+       description: An error ocurred on the server.
+       body:
+        application/json:
+          example: |
+            {
+              "errorCode": 500,
+              "errors": ["Internal Server Error."]
+            }
+
+  /{id}:
+    description: Get, update and delete items that can be purchased via microtransactions
+    get:
+      description: Get an item
+      queryParameters:
+
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                {
+                  "name": "Knife",
+                  "id": "f6f52fc3-761b-4c0d-846a-6c65123e1c8b",
+                  "created": "2017-01-01"
+                }
+        400:
+          body:
+            application/json:
+              example: |
+                {
+                  "errorCode": 400,
+                  "message": "Bad Request",
+                  "errors": ["Id is invalid"]
+                }
+        404:
+          body:
+            application/json:
+              example: |
+                {
+                  "errorCode": 404,
+                  "message": "Item Not Found",
+                  "errors": ["Id is invalid"]
+                }
+        500:
+          description: An error ocurred on the server.
+          body:
+           application/json:
+             example: |
+               {
+                 "errorCode": 500,
+                 "errors": ["Internal Server Error."]
+               }
+    delete:
+      description: Delete an item
+      body:
+        application/json:
+          example: |
+            {
+              "id": "f6f52fc3-761b-4c0d-846a-6c65123e1c8b",
+            }
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                {
+                  "message": "Item is deleted."
+                }
+    put:
+      description: Update an item
+      body:
+        application/json:
+          example: |
+            {
+              "id": "f6f52fc3-761b-4c0d-846a-6c65123e1c8b",
+              "name": "Fork"
+            }
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                {
+                  "id": "f6f52fc3-761b-4c0d-846a-6c65123e1c8b",
+                  "url": "xpto.com/items/f6f52fc3-761b-4c0d-846a-6c65123e1c8b"
+                }
+        400:
+          body:
+            application/json:
+              example: |
+                {
+                  "errorCode": 400,
+                  "message": "Bad Request",
+                  "errors": ["Id is invalid", "Invalid Name."]
+                }
+        404:
+          body:
+            application/json:
+              example: |
+                {
+                  "errorCode": 404,
+                  "message": "Item Not Found",
+                  "errors": ["Id is invalid"]
+                }
+        500:
+          description: An error ocurred on the server.
+          body:
+           application/json:
+             example: |
+               {
+                 "errorCode": 500,
+                 "errors": ["Internal Server Error."]
+               }
+/users:
+  description: Create and update users.
+  post:
+    description: Create a user
+    body:
+      application/json:
+        example: |
+            {
+                "name": "User1",
+                "email": "email@email.mail"
+            }
+    responses:
+      201:
+        description: Create a user
+        body:
+          application/json:
+            example: |
+                {
+                  "name": "User2",
+                  "email": "email@email.mail"
+                }
+      400:
+        body:
+          application/json:
+            example: |
+              {
+                "errorCode": 400,
+                "message": "The request is invalid.",
+                "errors": ["Name is invalid", "email is invalid"]
+              }
+      500:
+        description: An error ocurred on the server.
+        body:
+         application/json:
+           example: |
+             {
+               "errorCode": 500,
+               "errors": ["Internal Server Error."]
+             }
+  get:
+    description: Search users (elasticsearch?)
+    responses:
+      200:
+        description: Return pagined results of search
+        body:
+          application/json:
+            example: |
+              [
+                {
+                  "id": "9286287c-0996-41ff-91d5-ba9b48e0861e",
+                  "name": "User1",
+                  "email": "email@email.mail"
+                },
+                {
+                  "id": "b5906991-509a-400c-a588-5271eb61460a",
+                  "name": "User2",
+                  "email": "email@email.mail"
+                }
+              ]
+      500:
+        description: An error ocurred on the server.
+        body:
+         application/json:
+           example: |
+             {
+               "errorCode": 500,
+               "errors": ["Internal Server Error."]
+             }
+  /{id}:
+    description: Get and update user
+    get:
+      description: Return user by id
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                  {
+                  "id": "b5906991-509a-400c-a588-5271eb61460a",
+                  "name": "User2",
+                  "email": "email@email.mail"
+                  }
+        400:
+          body:
+           application/json:
+             example: |
+               {
+                 "errorCode": 400,
+                 "message": "Bad Request.",
+                 "errors": [ "Email field was incomplete." ]
+               }
+        404:
+          body:
+           application/json:
+             example: |
+               {
+                 "errorCode": 404,
+                 "errors": ["User Not Found. Id: b5906991-509a-400c-a588-5271eb61460a."]
+               }
+        500:
+          description: An error ocurred on the server.
+          body:
+           application/json:
+             example: |
+               {
+                 "errorCode": 500,
+                 "errors": ["Internal Server Error."]
+               }
+    patch:
+        description: Update a single information about a user.
+        body:
+          application/json-patch+json:
+                example: |
+                  [
+                      {
+                        op:"replace",
+                        path:"/name",
+                        value:"changed name"
+                      },
+                      {
+                        op:"replace",
+                        path:"/email",
+                        value:"changedemail@mail.com"
+                      }
+                  ]
+        responses:
+          200:
+            body:
+              application/json:
+                example: |
+                    {
+                      "op":"replace",
+                      "path":"/name",
+                      "value":"changed name",
+                      "errors": []
+                    }
+          400:
+            body:
+              application/json:
+                example: |
+                  {
+                    "errorCode": 400,
+                    "message": "The request is invalid.",
+                    "errors": ["Name is invalid", "email is invalid"]
+                  }
+          403:
+            body:
+              application/json:
+                example: |
+                  {
+                    "errorCode": 403,
+                    "message": "Forbidden Request",
+                    "errors": ["The path is forbidden to be updated. Path: /name1", "Invalid property in op field. Read https://tools.ietf.org/html/rfc6902#section-4 to see available properties."]
+                  }
+          404:
+            body:
+              application/json:
+                example: |
+                  {
+                    "errorCode": 404,
+                    "errors": ["Entity not found."]
+                  }
+          422:
+            body:
+              application/json:
+                example: |
+                  {
+                    "errorCode": 422,
+                    "message": ["The entity is invalid."]
+                  }
+          500:
+           description: An error ocurred on the server.
+           body:
+            application/json:
+              example: |
+                {
+                  "errorCode": 500,
+                  "errors": ["Internal Server Error."]
+                }
