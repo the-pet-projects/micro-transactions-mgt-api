@@ -14,42 +14,15 @@ node{
 				deleteDir()
 				checkout scm
 				
-				echo 'Building nothing...'
-		
-				/*
-				try {
-					sh '''./deploy/scripts/build.ci.sh'''
-				}
-				finally {
-					sh '''./deploy/scripts/build.ci.cleanup.sh'''
-				}
-				*/
+				echo 'Building nothing with version {env.PIPELINE_VERSION}...'
 			}
 			
 			stage('Unit Tests'){
 				echo 'Unit Testing Nothing...'
-				/*
-				try{
-					sh '''./deploy/scripts/build.ci.unittests.sh'''
-					step([$class: 'MSTestPublisher', testResultsFile: '**/test/unit/**/*.trx', failOnError: true, keepLongStdio: true])					
-				}			
-				finally {
-					sh '''./deploy/scripts/build.ci.unittests.cleanup.sh'''
-				} 
-				*/
 			}
 			
 			stage('Integration Tests'){
 				echo 'Integration Testing Nothing...'
-				/*
-				try{
-					sh '''./deploy/scripts/build.ci.integrationtests.sh'''
-					step([$class: 'MSTestPublisher', testResultsFile: '**/test/unit/**/*.trx', failOnError: true, keepLongStdio: true])
-				}
-				finally {
-					sh '''./deploy/scripts/build.ci.integrationtests.cleanup.sh'''
-				}
-				*/
 			}
 			
 			stage('Deploy'){
