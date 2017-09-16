@@ -11,9 +11,6 @@ node{
 			stage('Build') {
 			
 				currentBuild.displayName = '#'+env.PIPELINE_VERSION
-				/*
-				* deleteDir()
-				*/
 				checkout scm
 				
 				echo 'Building nothing with version {env.PIPELINE_VERSION}...'
