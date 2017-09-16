@@ -31,9 +31,7 @@ node{
 				/*
 				try{
 					sh '''./deploy/scripts/build.ci.unittests.sh'''
-					step([$class: 'MSTestPublisher', testResultsFile: '**/test/unit/**/*.trx', failOnError: true, keepLongStdio: true])
-					
-					
+					step([$class: 'MSTestPublisher', testResultsFile: '**/test/unit/**/*.trx', failOnError: true, keepLongStdio: true])					
 				}			
 				finally {
 					sh '''./deploy/scripts/build.ci.unittests.cleanup.sh'''
