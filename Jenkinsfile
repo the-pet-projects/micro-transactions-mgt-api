@@ -2,7 +2,9 @@ node{
 	
 	currentBuild.result="SUCCESS"
 	
-		
+	def version = VersionNumber(versionNumberString: '0.0.0.${BUILD_DATE_FORMATTED,\"yy\"}${BUILD_MONTH, XX}.${BUILDS_THIS_MONTH}')
+		withEnv(['PIPELINE_VERSION='+version])
+	
 	timestamps {
 		stage('Build') {
 			currentBuild.displayName = '#'+env.PIPELINE_VERSION
