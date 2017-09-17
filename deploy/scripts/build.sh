@@ -1,1 +1,1 @@
-docker-compose -f docker-compose.yml -p microtransactionmgt build
+docker-compose -f docker-compose.yml -p microtransactionmgtapi build

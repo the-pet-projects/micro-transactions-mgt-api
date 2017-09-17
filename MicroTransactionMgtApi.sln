@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Presentation", "1 - Pre
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{C4395E70-DF96-41FF-BE1A-19073C695107}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API.Tests", "test\unit\MicroTransactionMgtApi.Tests\API.Tests.csproj", "{98BC4411-D171-407D-B654-B4F593B7E2B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API.Tests", "test\unit\MicroTransactionMgtApi.Tests\API.Tests.csproj", "{98BC4411-D171-407D-B654-B4F593B7E2B0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deploy", "Deploy", "{C32C488A-C3C3-4065-87C1-9FC8689F1BA6}"
 	ProjectSection(SolutionItems) = preProject
@@ -22,6 +22,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docker", "Docker", "{DC4A3E
 		docker-compose.unittests.yml = docker-compose.unittests.yml
 		docker-compose.yml = docker-compose.yml
 		Dockerfile = Dockerfile
+		Dockerfile.build = Dockerfile.build
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{99D711CD-4431-4308-B8BD-6E52A3BA306F}"

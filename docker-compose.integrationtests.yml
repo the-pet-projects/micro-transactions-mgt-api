@@ -1,9 +1,9 @@
 version: '2'
 
 services:
-  microtransactionmgt:
-    container_name: microtransactionmgt
-    image: petprojects/micro-transactions-mgt:${BUILD_VERSION}
+  microtransactionmgtapi:
+    container_name: microtransactionmgtapi
+    image: petprojects/micro-transactions-mgt-api:${BUILD_VERSION}
     build:
       context: ./src/API
       dockerfile: Dockerfile
