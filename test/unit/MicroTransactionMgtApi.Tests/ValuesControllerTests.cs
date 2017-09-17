@@ -9,7 +9,7 @@ namespace API.Tests
         public void DockerIntegration_UnitTest_ReturnsPassed()
         {
             // Arrange
-            var testValue = true;
+            var testValue = false;
 
             // Assert
             testValue.Should().BeTrue();
