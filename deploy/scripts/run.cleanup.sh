@@ -1,1 +1,1 @@
-docker-compose -f docker-compose.yml -p ftm down
+docker-compose -f docker-compose.yml -p microtransactionmgt down

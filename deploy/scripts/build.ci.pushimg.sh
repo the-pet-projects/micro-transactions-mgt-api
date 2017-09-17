@@ -1,1 +1,1 @@
-docker push petprojects/toggling-it:${BUILD_VERSION}
+docker push petprojects/micro-transactions-mgt:${BUILD_VERSION}

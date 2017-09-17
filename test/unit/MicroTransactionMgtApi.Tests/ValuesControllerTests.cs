@@ -1,4 +1,4 @@
-namespace MicroTransactionMgtApi.Tests
+namespace API.Tests
 {
     using FluentAssertions;
     using Xunit;

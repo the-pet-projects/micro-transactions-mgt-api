@@ -1,2 +1,2 @@
-docker-compose -f docker-compose.yml -p ftm rm -fsv
-docker image rm -f petprojects/toggling-it:dev
+docker-compose -f docker-compose.yml -p microtransactionmgt rm -fsv
+docker image rm -f petprojects/micro-transactions-mgt:dev
