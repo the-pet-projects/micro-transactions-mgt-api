@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.15
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroTransactionsMgtApi", "src\MicroTransactionsMgtApi\MicroTransactionsMgtApi.csproj", "{36A5F236-D92B-4454-9741-E896881A2B09}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Presentation", "1 - Presentation", "{B6F9E01B-BD2C-4AE6-A287-B08D395CE473}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{C4395E70-DF96-41FF-BE1A-19073C695107}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroTransactionMgtApi.Tests", "test\unit\MicroTransactionMgtApi.Tests\MicroTransactionMgtApi.Tests.csproj", "{98BC4411-D171-407D-B654-B4F593B7E2B0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{36A5F236-D92B-4454-9741-E896881A2B09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36A5F236-D92B-4454-9741-E896881A2B09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36A5F236-D92B-4454-9741-E896881A2B09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36A5F236-D92B-4454-9741-E896881A2B09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98BC4411-D171-407D-B654-B4F593B7E2B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98BC4411-D171-407D-B654-B4F593B7E2B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98BC4411-D171-407D-B654-B4F593B7E2B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98BC4411-D171-407D-B654-B4F593B7E2B0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{36A5F236-D92B-4454-9741-E896881A2B09} = {B6F9E01B-BD2C-4AE6-A287-B08D395CE473}
+		{C4395E70-DF96-41FF-BE1A-19073C695107} = {B6F9E01B-BD2C-4AE6-A287-B08D395CE473}
+		{98BC4411-D171-407D-B654-B4F593B7E2B0} = {C4395E70-DF96-41FF-BE1A-19073C695107}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9BC7BFDF-30D7-45B0-BB83-53CAA36C9A70}
+	EndGlobalSection
+EndGlobal
