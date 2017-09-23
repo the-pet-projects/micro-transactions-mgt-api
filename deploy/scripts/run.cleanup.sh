@@ -1,1 +1,1 @@
-docker-compose -f docker-compose.yml -p microtransactionmgtapi down
+docker-compose -f docker-compose.yml -p microtransactionsmgtapi down

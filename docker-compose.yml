@@ -1,8 +1,8 @@
 version: '2'
 
 services:
-  microtransactionmgtapi:
-    container_name: microtransactionmgtapi
+  microtransactionsmgtapi:
+    container_name: microtransactionsmgtapi
     image: petprojects/micro-transactions-mgt-api:dev
     build:
       context: ./src/API

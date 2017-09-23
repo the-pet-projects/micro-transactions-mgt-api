@@ -21,8 +21,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docker", "Docker", "{DC4A3E
 		docker-compose.integrationtests.yml = docker-compose.integrationtests.yml
 		docker-compose.unittests.yml = docker-compose.unittests.yml
 		docker-compose.yml = docker-compose.yml
-		Dockerfile = Dockerfile
-		Dockerfile.build = Dockerfile.build
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{99D711CD-4431-4308-B8BD-6E52A3BA306F}"
