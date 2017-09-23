@@ -15,7 +15,7 @@
         static AppSettings()
         {
             var assembly = typeof(AssemblyInitialize).GetTypeInfo().Assembly;
-            var fileName = "appsettings.json";
+            var fileName = "IntegrationTests.appsettings.json";
             using (var stream = assembly.GetManifestResourceStream(fileName))
             {
                 var jsonString = new StreamReader(stream).ReadToEnd();
