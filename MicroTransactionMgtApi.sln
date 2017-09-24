@@ -11,33 +11,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API.Tests", "test\unit\Micr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deploy", "Deploy", "{C32C488A-C3C3-4065-87C1-9FC8689F1BA6}"
 	ProjectSection(SolutionItems) = preProject
+		integrationtestsparams.env = integrationtestsparams.env
 		Jenkinsfile = Jenkinsfile
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docker", "Docker", "{DC4A3E13-596C-4325-A7D8-42962CD8EA9D}"
 	ProjectSection(SolutionItems) = preProject
 		.dockerignore = .dockerignore
-		docker-compose.build.yml = docker-compose.build.yml
-		docker-compose.integrationtests.yml = docker-compose.integrationtests.yml
-		docker-compose.unittests.yml = docker-compose.unittests.yml
+		docker-compose.release.yml = docker-compose.release.yml
 		docker-compose.yml = docker-compose.yml
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{99D711CD-4431-4308-B8BD-6E52A3BA306F}"
-	ProjectSection(SolutionItems) = preProject
-		deploy\scripts\build.ci.cleanup.sh = deploy\scripts\build.ci.cleanup.sh
-		deploy\scripts\build.ci.integrationtests.cleanup.sh = deploy\scripts\build.ci.integrationtests.cleanup.sh
-		deploy\scripts\build.ci.integrationtests.sh = deploy\scripts\build.ci.integrationtests.sh
-		deploy\scripts\build.ci.pushimg.sh = deploy\scripts\build.ci.pushimg.sh
-		deploy\scripts\build.ci.sh = deploy\scripts\build.ci.sh
-		deploy\scripts\build.ci.unittests.cleanup.sh = deploy\scripts\build.ci.unittests.cleanup.sh
-		deploy\scripts\build.ci.unittests.sh = deploy\scripts\build.ci.unittests.sh
-		deploy\scripts\build.cleanup.sh = deploy\scripts\build.cleanup.sh
-		deploy\scripts\build.sh = deploy\scripts\build.sh
-		deploy\scripts\run-integration-tests.sh = deploy\scripts\run-integration-tests.sh
-		deploy\scripts\run-unit-tests.sh = deploy\scripts\run-unit-tests.sh
-		deploy\scripts\run.cleanup.sh = deploy\scripts\run.cleanup.sh
-		deploy\scripts\run.sh = deploy\scripts\run.sh
+		Dockerfile.build = Dockerfile.build
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API", "src\API\API.csproj", "{4452D90F-6ABD-4FBB-B635-36CEAF93DE31}"
@@ -64,7 +47,6 @@ Global
 		{C4395E70-DF96-41FF-BE1A-19073C695107} = {B6F9E01B-BD2C-4AE6-A287-B08D395CE473}
 		{98BC4411-D171-407D-B654-B4F593B7E2B0} = {C4395E70-DF96-41FF-BE1A-19073C695107}
 		{DC4A3E13-596C-4325-A7D8-42962CD8EA9D} = {C32C488A-C3C3-4065-87C1-9FC8689F1BA6}
-		{99D711CD-4431-4308-B8BD-6E52A3BA306F} = {C32C488A-C3C3-4065-87C1-9FC8689F1BA6}
 		{4452D90F-6ABD-4FBB-B635-36CEAF93DE31} = {B6F9E01B-BD2C-4AE6-A287-B08D395CE473}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
