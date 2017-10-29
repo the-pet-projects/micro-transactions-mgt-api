@@ -7,13 +7,15 @@
     using System.Linq;
     using System.Reflection;
 
-    //TODO: Read and understand later :)
+    // TODO: Read and understand later :)
     // Copied from https://github.com/gregoryyoung/m-r/blob/master/SimpleCQRS/InfrastructureCrap.DontBotherReadingItsNotImportant.cs
 
-    //FROM http://blogs.msdn.com/b/davidebb/archive/2010/01/18/use-c-4-0-dynamic-to-drastically-simplify-your-private-reflection-code.aspx
-    //doesnt count to line counts :)
+    // FROM http://blogs.msdn.com/b/davidebb/archive/2010/01/18/use-c-4-0-dynamic-to-drastically-simplify-your-private-reflection-code.aspx
+    // doesnt count to line counts :)
     internal class PrivateReflectionDynamicObject : DynamicObject
     {
+        private const BindingFlags BindingFlags = System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic;
+
         private static readonly IDictionary<Type, IDictionary<string, IProperty>> PropertiesOnType = new ConcurrentDictionary<Type, IDictionary<string, IProperty>>();
 
         // Simple abstraction to make field and property access consistent
@@ -26,56 +28,7 @@
             void SetValue(object obj, object val, object[] index);
         }
 
-        // IProperty implementation over a PropertyInfo
-        private class Property : IProperty
-        {
-            internal PropertyInfo PropertyInfo { get; set; }
-
-            string IProperty.Name => this.PropertyInfo.Name;
-
-            object IProperty.GetValue(object obj, object[] index)
-            {
-                return this.PropertyInfo.GetValue(obj, index);
-            }
-
-            void IProperty.SetValue(object obj, object val, object[] index)
-            {
-                this.PropertyInfo.SetValue(obj, val, index);
-            }
-        }
-
-        // IProperty implementation over a FieldInfo
-        private class Field : IProperty
-        {
-            internal FieldInfo FieldInfo { get; set; }
-
-            string IProperty.Name => this.FieldInfo.Name;
-
-            object IProperty.GetValue(object obj, object[] index)
-            {
-                return this.FieldInfo.GetValue(obj);
-            }
-
-            void IProperty.SetValue(object obj, object val, object[] index)
-            {
-                this.FieldInfo.SetValue(obj, val);
-            }
-        }
-
         private object RealObject { get; set; }
-
-        private const BindingFlags bindingFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
-
-        internal static object WrapObjectIfNeeded(object o)
-        {
-            // Don't wrap primitive types, which don't have many interesting internal APIs
-            if (o == null || o.GetType().IsPrimitive || o is string)
-            {
-                return o;
-            }
-
-            return new PrivateReflectionDynamicObject { RealObject = o };
-        }
 
         public override bool TryGetMember(GetMemberBinder binder, out object result)
         {
@@ -142,6 +95,82 @@
             return this.RealObject.ToString();
         }
 
+        internal static object WrapObjectIfNeeded(object o)
+        {
+            // Don't wrap primitive types, which don't have many interesting internal APIs
+            if (o == null || o.GetType().IsPrimitive || o is string)
+            {
+                return o;
+            }
+
+            return new PrivateReflectionDynamicObject { RealObject = o };
+        }
+
+        private static IDictionary<string, IProperty> GetTypeProperties(Type type)
+        {
+            // First, check if we already have it cached
+            IDictionary<string, IProperty> typeProperties;
+
+            if (PropertiesOnType.TryGetValue(type, out typeProperties))
+            {
+                return typeProperties;
+            }
+
+            // Not cache, so we need to build it
+
+            typeProperties = new ConcurrentDictionary<string, IProperty>();
+
+            // First, add all the properties
+            foreach (PropertyInfo prop in type.GetProperties(BindingFlags).Where(p => p.DeclaringType == type))
+            {
+                typeProperties[prop.Name] = new Property() { PropertyInfo = prop };
+            }
+
+            // Now, add all the fields
+            foreach (FieldInfo field in type.GetFields(BindingFlags).Where(p => p.DeclaringType == type))
+            {
+                typeProperties[field.Name] = new Field() { FieldInfo = field };
+            }
+
+            // Finally, recurse on the base class to add its fields
+            if (type.BaseType != null)
+            {
+                foreach (IProperty prop in GetTypeProperties(type.BaseType).Values)
+                {
+                    typeProperties[prop.Name] = prop;
+                }
+            }
+
+            // Cache it for next time
+            PropertiesOnType[type] = typeProperties;
+
+            return typeProperties;
+        }
+
+        private static object InvokeMemberOnType(Type type, object target, string name, object[] args)
+        {
+            try
+            {
+                // Try to incoke the method
+                return type.InvokeMember(
+                    name,
+                    BindingFlags.InvokeMethod | BindingFlags,
+                    null,
+                    target,
+                    args);
+            }
+            catch (MissingMethodException)
+            {
+                // If we couldn't find the method, try on the base class
+                if (type.BaseType != null)
+                {
+                    return InvokeMemberOnType(type.BaseType, target, name, args);
+                }
+                // quick greg hack to allow methods to not exist!
+                return null;
+            }
+        }
+
         private IProperty GetIndexProperty()
         {
             // The index property is always named "Item" in C#
@@ -169,68 +198,39 @@
             throw new ArgumentException($"The property {propertyName} doesn't exist on type {this.RealObject.GetType()}. Supported properties are: {string.Join(", ", propNames)}");
         }
 
-        private static IDictionary<string, IProperty> GetTypeProperties(Type type)
+        // IProperty implementation over a FieldInfo
+        private class Field : IProperty
         {
-            // First, check if we already have it cached
-            IDictionary<string, IProperty> typeProperties;
+            string IProperty.Name => this.FieldInfo.Name;
 
-            if (PropertiesOnType.TryGetValue(type, out typeProperties))
+            internal FieldInfo FieldInfo { get; set; }
+
+            object IProperty.GetValue(object obj, object[] index)
             {
-                return typeProperties;
+                return this.FieldInfo.GetValue(obj);
             }
 
-            // Not cache, so we need to build it
-
-            typeProperties = new ConcurrentDictionary<string, IProperty>();
-
-            // First, add all the properties
-            foreach (PropertyInfo prop in type.GetProperties(bindingFlags).Where(p => p.DeclaringType == type))
+            void IProperty.SetValue(object obj, object val, object[] index)
             {
-                typeProperties[prop.Name] = new Property() { PropertyInfo = prop };
+                this.FieldInfo.SetValue(obj, val);
             }
-
-            // Now, add all the fields
-            foreach (FieldInfo field in type.GetFields(bindingFlags).Where(p => p.DeclaringType == type))
-            {
-                typeProperties[field.Name] = new Field() { FieldInfo = field };
-            }
-
-            // Finally, recurse on the base class to add its fields
-            if (type.BaseType != null)
-            {
-                foreach (IProperty prop in GetTypeProperties(type.BaseType).Values)
-                {
-                    typeProperties[prop.Name] = prop;
-                }
-            }
-
-            // Cache it for next time
-            PropertiesOnType[type] = typeProperties;
-
-            return typeProperties;
         }
 
-        private static object InvokeMemberOnType(Type type, object target, string name, object[] args)
+        // IProperty implementation over a PropertyInfo
+        private class Property : IProperty
         {
-            try
+            string IProperty.Name => this.PropertyInfo.Name;
+
+            internal PropertyInfo PropertyInfo { get; set; }
+
+            object IProperty.GetValue(object obj, object[] index)
             {
-                // Try to incoke the method
-                return type.InvokeMember(
-                    name,
-                    BindingFlags.InvokeMethod | bindingFlags,
-                    null,
-                    target,
-                    args);
+                return this.PropertyInfo.GetValue(obj, index);
             }
-            catch (MissingMethodException)
+
+            void IProperty.SetValue(object obj, object val, object[] index)
             {
-                // If we couldn't find the method, try on the base class
-                if (type.BaseType != null)
-                {
-                    return InvokeMemberOnType(type.BaseType, target, name, args);
-                }
-                //quick greg hack to allow methods to not exist!
-                return null;
+                this.PropertyInfo.SetValue(obj, val, index);
             }
         }
     }

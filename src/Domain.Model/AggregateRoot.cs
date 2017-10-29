@@ -6,7 +6,7 @@
 
     public abstract class AggregateRoot
     {
-        private readonly List<Event> Changes = new List<Event>();
+        private readonly List<Event> changes = new List<Event>();
 
         public abstract Guid Id { get; }
 
@@ -14,12 +14,12 @@
 
         public IEnumerable<Event> GetUncommitedChanges()
         {
-            return this.Changes;
+            return this.changes;
         }
 
         public void MarkChangesAsCommited()
         {
-            this.Changes.Clear();
+            this.changes.Clear();
         }
 
         public void LoadFromHistory(IEnumerable<Event> history)
@@ -41,7 +41,7 @@
 
             if (isNew)
             {
-                this.Changes.Add(@event);
+                this.changes.Add(@event);
             }
         }
     }
