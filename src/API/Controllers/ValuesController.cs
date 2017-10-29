@@ -3,7 +3,8 @@
     using System.Collections.Generic;
     using Microsoft.AspNetCore.Mvc;
 
-    [Route("api/[controller]")]
+    [ApiVersion("1")]
+    [Route("v1/[controller]")]
     public class ValuesController : Controller
     {
         // GET api/values
