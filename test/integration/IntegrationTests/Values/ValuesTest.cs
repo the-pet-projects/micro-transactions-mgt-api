@@ -18,7 +18,7 @@ namespace IntegrationTests.Values
             var httpclient = new HttpClient();
 
             // Act
-            var act = await httpclient.GetAsync(AppSettings.Current.ApiEndpoint + "api/values").ConfigureAwait(false);
+            var act = await httpclient.GetAsync(AppSettings.Current.ApiEndpoint + "v1/values").ConfigureAwait(false);
 
             // Assert
             Assert.AreEqual(HttpStatusCode.OK, act.StatusCode);
