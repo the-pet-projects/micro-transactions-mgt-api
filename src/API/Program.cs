@@ -1,4 +1,4 @@
-﻿namespace API
+﻿namespace PetProjects.MtsManagementApi.API
 {
     using Microsoft.AspNetCore;
     using Microsoft.AspNetCore.Hosting;

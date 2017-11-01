@@ -1,4 +1,4 @@
-namespace API.Tests
+namespace PetProjects.MtsManagementApi.API.Tests
 {
     using FluentAssertions;
     using Xunit;

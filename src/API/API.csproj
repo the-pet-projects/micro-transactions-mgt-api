@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+    <AssemblyName>PetProjects.MtsManagementApi.API</AssemblyName>
+    <RootNamespace>PetProjects.MtsManagementApi.API</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

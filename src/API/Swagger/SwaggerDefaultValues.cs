@@ -1,4 +1,4 @@
-﻿namespace API.Swagger
+﻿namespace PetProjects.MtsManagementApi.API.Swagger
 {
     using System.Linq;
     using Swashbuckle.AspNetCore.Swagger;

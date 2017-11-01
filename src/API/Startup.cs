@@ -1,14 +1,11 @@
-﻿namespace API
+﻿namespace PetProjects.MtsManagementApi.API
 {
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.ApiExplorer;
-    using Microsoft.AspNetCore.Mvc.Routing;
-    using Microsoft.AspNetCore.Routing;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.Extensions.Options;
     using Swashbuckle.AspNetCore.Swagger;
 
     public class Startup
