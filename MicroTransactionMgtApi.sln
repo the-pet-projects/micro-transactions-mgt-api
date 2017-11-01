@@ -20,7 +20,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docker", "Docker", "{DC4A3E
 		.dockerignore = .dockerignore
 		docker-compose.release.yml = docker-compose.release.yml
 		docker-compose.yml = docker-compose.yml
-		Dockerfile.build = Dockerfile.build
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API", "src\API\API.csproj", "{4452D90F-6ABD-4FBB-B635-36CEAF93DE31}"
@@ -45,17 +44,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Core", "src\App
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Core.Tests", "test\unit\Application.Core.Tests\Application.Core.Tests.csproj", "{3C4F0F14-520B-403F-9FA4-D2CCCB548D01}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Model.Tests", "test\unit\Domain.Model.Tests\Domain.Model.Tests.csproj", "{70379BC9-7574-451A-985E-5075B14EF509}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.Model.Tests", "test\unit\Domain.Model.Tests\Domain.Model.Tests.csproj", "{70379BC9-7574-451A-985E-5075B14EF509}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Model", "src\Domain.Model\Domain.Model.csproj", "{9E9AE8D8-EC0C-41CA-BF9B-B0C8F908EEAB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.Model", "src\Domain.Model\Domain.Model.csproj", "{9E9AE8D8-EC0C-41CA-BF9B-B0C8F908EEAB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Repository", "src\Data.Repository\Data.Repository.csproj", "{0468C239-5F0B-4B2C-BB4A-309F5C6D3FCD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data.Repository", "src\Data.Repository\Data.Repository.csproj", "{0468C239-5F0B-4B2C-BB4A-309F5C6D3FCD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.CrossCutting", "src\Infrastructure.CrossCutting\Infrastructure.CrossCutting.csproj", "{CFE9ECE8-FC4B-4B86-97EE-F9E93F673351}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.CrossCutting", "src\Infrastructure.CrossCutting\Infrastructure.CrossCutting.csproj", "{CFE9ECE8-FC4B-4B86-97EE-F9E93F673351}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.IoC", "src\Infrastructure.IoC\Infrastructure.IoC.csproj", "{B9F0377D-0027-44DA-83C4-A14F1270CE37}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.IoC", "src\Infrastructure.IoC\Infrastructure.IoC.csproj", "{B9F0377D-0027-44DA-83C4-A14F1270CE37}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.CrossCutting.Tests", "test\unit\Infrastructure.CrossCutting.Tests\Infrastructure.CrossCutting.Tests.csproj", "{C373E6A9-1F22-4C15-B05B-51B0532E2915}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.CrossCutting.Tests", "test\unit\Infrastructure.CrossCutting.Tests\Infrastructure.CrossCutting.Tests.csproj", "{C373E6A9-1F22-4C15-B05B-51B0532E2915}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
