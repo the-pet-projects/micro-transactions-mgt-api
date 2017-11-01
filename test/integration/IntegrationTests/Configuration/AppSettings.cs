@@ -1,4 +1,4 @@
-﻿namespace IntegrationTests.Configuration
+﻿namespace PetProjects.MtsManagementApi.IntegrationTests.Configuration
 {
     using System.Collections.Generic;
     using System.IO;
@@ -15,7 +15,7 @@
         static AppSettings()
         {
             var assembly = typeof(AssemblyInitialize).GetTypeInfo().Assembly;
-            var fileName = "IntegrationTests.appsettings.json";
+            var fileName = "PetProjects.MtsManagementApi.IntegrationTests.appsettings.json";
             using (var stream = assembly.GetManifestResourceStream(fileName))
             {
                 var jsonString = new StreamReader(stream).ReadToEnd();

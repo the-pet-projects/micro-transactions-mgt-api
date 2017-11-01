@@ -1,4 +1,4 @@
-﻿namespace IntegrationTests
+﻿namespace PetProjects.MtsManagementApi.IntegrationTests
 {
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 

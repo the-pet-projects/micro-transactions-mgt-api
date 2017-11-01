@@ -1,4 +1,4 @@
-namespace IntegrationTests.Values
+namespace PetProjects.MtsManagementApi.IntegrationTests.Values
 {
     using System.Linq;
     using System.Net;
