@@ -1,4 +1,4 @@
-namespace Infrastructure.CrossCutting.Mediator
+namespace PetProjects.MtsManagementApi.Infrastructure.CrossCutting.Mediator
 {
     using System;
     using System.Collections.Generic;

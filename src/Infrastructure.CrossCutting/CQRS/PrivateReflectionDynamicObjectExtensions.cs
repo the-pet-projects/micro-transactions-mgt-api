@@ -1,4 +1,4 @@
-namespace Infrastructure.CrossCutting.CQRS
+namespace PetProjects.MtsManagementApi.Infrastructure.CrossCutting.CQRS
 {
     public static class PrivateReflectionDynamicObjectExtensions
     {

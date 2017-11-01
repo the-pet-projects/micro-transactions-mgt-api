@@ -1,4 +1,4 @@
-namespace Infrastructure.CrossCutting.CQRS.Commands
+namespace PetProjects.MtsManagementApi.Infrastructure.CrossCutting.CQRS.Commands
 {
     using Results;
 

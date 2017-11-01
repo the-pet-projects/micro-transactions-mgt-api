@@ -1,4 +1,4 @@
-﻿namespace Infrastructure.CrossCutting.Results
+﻿namespace PetProjects.MtsManagementApi.Infrastructure.CrossCutting.Results
 {
     using System.Collections.Generic;
 

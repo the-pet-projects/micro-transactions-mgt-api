@@ -1,4 +1,4 @@
-namespace Infrastructure.CrossCutting.CQRS.Queries
+namespace PetProjects.MtsManagementApi.Infrastructure.CrossCutting.CQRS.Queries
 {
     using System.Threading.Tasks;
 
