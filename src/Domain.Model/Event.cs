@@ -1,4 +1,4 @@
-namespace Domain.Model
+namespace PetProjects.MtsManagementApi.Domain.Model
 {
     public class Event : IMessage
     {

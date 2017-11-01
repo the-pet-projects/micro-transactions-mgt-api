@@ -4,6 +4,10 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
 
     <IsPackable>false</IsPackable>
+
+    <AssemblyName>PetProjects.MtsManagementApi.Domain.Model.Tests</AssemblyName>
+
+    <RootNamespace>PetProjects.MtsManagementApi.Domain.Model.Tests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

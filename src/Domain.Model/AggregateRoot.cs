@@ -1,4 +1,4 @@
-﻿namespace Domain.Model
+﻿namespace PetProjects.MtsManagementApi.Domain.Model
 {
     using System;
     using System.Collections.Generic;

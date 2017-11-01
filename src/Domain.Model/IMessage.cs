@@ -1,4 +1,4 @@
-namespace Domain.Model
+namespace PetProjects.MtsManagementApi.Domain.Model
 {
     public interface IMessage
     {
