@@ -4,7 +4,7 @@
     using Microsoft.AspNetCore.Mvc;
 
     [ApiVersion("1")]
-    [Route("v{version:apiVersion}/[controller]")]
+    [Route("v{version:apiVersion}/values")]
     public class ValuesController : Controller
     {
         // GET api/values

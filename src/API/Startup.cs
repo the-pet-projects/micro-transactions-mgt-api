@@ -20,15 +20,21 @@
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services
+           services
                 .AddMvcCore()
                 .AddVersionedApiExplorer(o => o.GroupNameFormat = "'v'VV");
+
+            // this is needed, otherwise API won't work. Since AddMvc adds a lot of components that aren't designated as core
+            // Example here: https://offering.solutions/blog/articles/2017/02/07/difference-between-addmvc-addmvcore/
+            // AddMvc() returns an IMvcBuilder while AddMvcCore return a IMvcCoreBuilder
+            // We either add all dependencies or maintain this like this.
+            services.AddMvc();
 
             services.AddApiVersioning(o =>
             {
                 o.ReportApiVersions = true;
                 o.AssumeDefaultVersionWhenUnspecified = true;
-                o.DefaultApiVersion = new ApiVersion(1, 0);
+                o.DefaultApiVersion = new ApiVersion(1, 1);
             });
 
             services.AddSwaggerGen(c =>
