@@ -13,6 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deploy", "Deploy", "{C32C48
 	ProjectSection(SolutionItems) = preProject
 		integrationtestsparams.env = integrationtestsparams.env
 		Jenkinsfile = Jenkinsfile
+		Settings.StyleCop = Settings.StyleCop
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docker", "Docker", "{DC4A3E13-596C-4325-A7D8-42962CD8EA9D}"

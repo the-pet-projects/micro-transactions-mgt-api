@@ -24,8 +24,6 @@
                 .AddMvcCore()
                 .AddVersionedApiExplorer(o => o.GroupNameFormat = "'v'VV");
 
-            services.AddMvc();
-
             services.AddApiVersioning(o =>
             {
                 o.ReportApiVersions = true;
@@ -68,10 +66,9 @@
         {
             var info = new Info()
             {
-                Title = $"SOA Map API {description.ApiVersion}",
+                Title = $"Micro Transaction Management API {description.ApiVersion}",
                 Version = description.ApiVersion.ToString(),
-                Description = "An API to create a map of dependencies between SOA adn Infrastructure as well as teams who manage the Services.",
-                ////Contact = new Contact() { Name = "Pedro Moreira", Email = "pedromoreira51" },
+                Description = "An API that manages items and user for the Micro Transactions System",
                 License = new License() { Name = "MIT", Url = "https://opensource.org/licenses/MIT" }
             };
 

@@ -1,4 +1,4 @@
-﻿namespace PetProjects.MtsManagementApi.Infrastructure.CrossCutting.CQRS
+﻿namespace PetProjects.MtsManagementApi.Infrastructure.CrossCutting.Reflection
 {
     using System;
     using System.Collections.Concurrent;
@@ -117,7 +117,6 @@
             }
 
             // Not cache, so we need to build it
-
             typeProperties = new ConcurrentDictionary<string, IProperty>();
 
             // First, add all the properties
@@ -166,6 +165,7 @@
                 {
                     return InvokeMemberOnType(type.BaseType, target, name, args);
                 }
+
                 // quick greg hack to allow methods to not exist!
                 return null;
             }

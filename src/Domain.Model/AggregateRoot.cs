@@ -2,7 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
-    using Infrastructure.CrossCutting.CQRS;
+    using Infrastructure.CrossCutting.Reflection;
 
     public abstract class AggregateRoot
     {
