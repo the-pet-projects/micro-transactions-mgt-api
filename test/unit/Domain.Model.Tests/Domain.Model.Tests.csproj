@@ -5,9 +5,9 @@
 
     <IsPackable>false</IsPackable>
 
-    <AssemblyName>PetProjects.MtsManagementApi.API.Tests</AssemblyName>
+    <AssemblyName>PetProjects.MtsManagementApi.Domain.Model.Tests</AssemblyName>
 
-    <RootNamespace>PetProjects.MtsManagementApi.API.Tests</RootNamespace>
+    <RootNamespace>PetProjects.MtsManagementApi.Domain.Model.Tests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
