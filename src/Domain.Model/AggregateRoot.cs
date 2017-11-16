@@ -2,7 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-    using Infrastructure.CrossCutting.Reflection;
 
     public abstract class AggregateRoot
     {
@@ -35,9 +34,11 @@
             this.ApplyChange(@event, true);
         }
 
+        protected abstract void Apply(Event @event);
+
         private void ApplyChange(Event @event, bool isNew)
         {
-            this.AsDynamic().Apply(@event);
+            this.Apply(@event);
 
             if (isNew)
             {
